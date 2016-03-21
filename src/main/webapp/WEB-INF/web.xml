@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+    <!--Database connection to HANA-->
+    <resource-ref>
+        <res-ref-name>jdbc/DefaultDB</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+    </resource-ref>
+    
+    <!-- Users need to login. Remove this if no authentication is necessary
+    	 If additional (role based) authorization is necessary, check: 
+    	 https://help.hana.ondemand.com/help/frameset.htm?e637f62abb571014857cb0232adc43a7.html -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+	</login-config>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Everyone</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-role>
+		<description>All SAP HANA Cloud Platform users</description>
+		<role-name>Everyone</role-name>
+	</security-role>    
+    
+</web-app>

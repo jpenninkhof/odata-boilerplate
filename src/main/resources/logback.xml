@@ -1,0 +1,24 @@
+<!--This is a copy of the default logback.xml in tomcat. Since some of the classes could not be found and therefore-->
+<!--prevented application startup, they are currently commented out.-->
+
+
+<configuration>
+    <conversionRule conversionWord="a" converterClass="com.sap.core.js.logging.converter.ACHPatternConverter"/>
+    <conversionRule conversionWord="b" converterClass="com.sap.core.js.logging.converter.BundleNamePatternConverter"/>
+    <conversionRule conversionWord="s" converterClass="com.sap.core.js.logging.converter.DSRPatternConverter"/>
+    <conversionRule conversionWord="z" converterClass="com.sap.core.js.logging.converter.SpaceApplPatternConverter"/>
+    <conversionRule conversionWord="u" converterClass="com.sap.core.js.logging.converter.UserPatternConverter"/>
+    <conversionRule conversionWord="o" converterClass="com.sap.core.js.logging.converter.UTFOffsetPatternConverter"/>
+
+    <jmxConfigurator/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

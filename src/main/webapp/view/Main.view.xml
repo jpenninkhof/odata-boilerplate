@@ -1,0 +1,91 @@
+<mvc:View
+	controllerName="com.penninkhof.odata.controller.Main"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+
+					<IconTabBar
+						id="idIconTabBarNoIcons"
+						expanded="{device>/isNoPhone}"
+						class="sapUiResponsiveContentPadding">
+						<items>
+						
+							<IconTabFilter text="Regular table">
+								<Text text="This example is based on regular UI5 controls. The layout and functionality of the table and filter are declared in the UI5 view" class="sapUiMediumMarginBottom" />
+								<Table
+									id="table"
+									inset="false"
+									growing="true"
+									growingScrollToLoad="true"
+									items="{/Members}"
+									updateFinished="onUpdateFinished">
+									<headerToolbar>
+										<Toolbar id="tableToolbar">
+											<Label text="{i18n>members} ({ui>/count})" class="sapMH4FontSize"  />
+											<ToolbarSpacer />
+											<SearchField
+												id="searchField"
+												search="onSearchPressed"
+												placeholder="{i18n>searchPlaceholder}"
+												width="30%" />
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column id="id" width="20%" />
+										<Column id="firstName" />
+										<Column id="lastName" />
+									</columns>
+									<ColumnListItem id="columnListItem">
+										<cells>
+											<ObjectIdentifier title="{Id}" class="sapMTableContentMargin"/>
+											<Text text="{FirstName}" class="sapMTableContentMargin" />
+											<Text text="{LastName}" class="sapMTableContentMargin" />
+										</cells>
+									</ColumnListItem>
+								</Table>
+							</IconTabFilter>
+							
+							<IconTabFilter text="Smart table">
+								<Text text="This example is based on smart controls. The layout and functionality of the table and filter are controlled by annotations in metadata.xml" />
+								<smartFilterBar:SmartFilterBar 
+									id="smartFilterBar" 
+									entityType="Member" >
+									<smartFilterBar:controlConfiguration>
+										<smartFilterBar:ControlConfiguration key="FirstName" visibleInAdvancedArea="true" />
+										<smartFilterBar:ControlConfiguration key="LastName" visibleInAdvancedArea="true" />
+									</smartFilterBar:controlConfiguration>
+								</smartFilterBar:SmartFilterBar>
+								<smartTable:SmartTable
+									entitySet="Members"
+									smartFilterId="smartFilterBar"
+									tableType="ResponsiveTable"
+									useExportToExcel="true"
+									useVariantManagement="false"
+									useTablePersonalisation="true"
+									header="Members"
+									showRowCount="true"
+									enableAutoBinding="true"
+									demandPopin="true"/>
+							</IconTabFilter>
+
+						</items>
+					</IconTabBar>
+				</content>
+
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="{i18n>add}" press="onAddPressed" />
+					</Toolbar>
+				</footer>
+
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

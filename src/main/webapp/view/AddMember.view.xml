@@ -1,0 +1,51 @@
+<mvc:View
+	controllerName="com.penninkhof.odata.controller.AddMember"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<App>
+		<pages>
+			<Page
+				title="{i18n>title}"
+				navButtonPress="onNavBack"
+				showNavButton="true">
+				<content>
+
+					<f:SimpleForm id="SimpleFormChange354"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						title="Address"
+						labelSpanL="3"
+						labelSpanM="3"
+						emptySpanL="4"
+						emptySpanM="4"
+						columnsL="1"
+						columnsM="1"
+						class="editableForm">
+						<f:content>
+							<Label text="{i18n>id}" />
+							<Input value="{path: 'Id', type: 'sap.ui.model.type.Integer'}" type="Number" />
+							<Label text="{i18n>firstName}" />
+							<Input value="{FirstName}" />
+							<Label text="{i18n>lastName}" />
+							<Input value="{LastName}" />
+						</f:content>
+					</f:SimpleForm>
+
+				</content>
+
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="{i18n>save}" icon="sap-icon://accept" press="onAcceptPressed" type="Accept" />
+					</Toolbar>
+				</footer>
+
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
