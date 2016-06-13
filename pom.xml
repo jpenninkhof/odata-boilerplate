@@ -37,7 +37,7 @@
 				<dependency>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-web</artifactId>
-					<!-- Some exclusions are necessary to make Spring Boot run on HCP. --> 
+					<!-- Some exclusions are necessary to make Spring Boot run on HCP. -->
 					<exclusions>
 						<exclusion>
 							<groupId>org.springframework.boot</groupId>
@@ -87,7 +87,7 @@
 				</dependency>
 			</dependencies>
 		</profile>
-		
+
 		<!-- Self-contained JAR -->
 		<profile>
 			<id>jar</id>
@@ -150,15 +150,19 @@
 						</executions>
 					</plugin>
 		        </plugins>
-		    </build>			
+		    </build>
 		</profile>
-		
+
 	</profiles>
-	
+
 	<dependencies>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
         </dependency>
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
@@ -198,7 +202,7 @@
 	        </plugin>
         </plugins>
     </build>
-	
+
     <pluginRepositories>
         <pluginRepository>
             <id>spring-releases</id>
